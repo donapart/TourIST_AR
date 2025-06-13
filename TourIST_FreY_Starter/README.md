@@ -23,8 +23,3 @@
 - `README.md`: Diese Datei.
 
 Viel Erfolg mit deinem AR-Projekt!
-\n## Weitere Ressourcen
-
-- `TourIST_AR-main` enthält eine minimale README für das Hauptprojekt.
-- `TourIST_FreY_Doku` beinhaltet die HTML-Dokumentation.
-- `TourIST_FreY_Starter` stellt die eigentlichen Unity-Dateien zur Verfügung.
