@@ -14,6 +14,27 @@
 7. Platziere `DummyMarker`-Prefabs in der Szene und passe Koordinaten an.
 8. Teste das Projekt auf Android und iOS.
 
+## SurrealDB Setup
+
+1. Starte eine SurrealDB Instanz (lokal oder remote).
+2. Erstelle Namespace `touristfrey` und Database `arapp`.
+3. Lege eine `marker` Tabelle mit Feldern `id`, `label`, `latitude`, `longitude` an.
+4. Passe in `SurrealDBClient` die `restUrl`, `username` und `password` an.
+
+Die REST‑Abfrage `SELECT * FROM marker;` liefert ein JSON Array ähnlich:
+
+```json
+[
+  {
+    "result": [
+      { "id": "marker:demo", "label": "Museum", "latitude": 48.137, "longitude": 11.576 }
+    ]
+  }
+]
+```
+
+Dieses Format wird von `MarkerManager` erwartet und kann optional über `PlayerPrefs` zwischengespeichert werden.
+
 ## Struktur
 
 - `Assets/Scripts`: Enthält alle Kern-Scripts.
