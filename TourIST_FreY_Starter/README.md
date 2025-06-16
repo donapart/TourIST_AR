@@ -26,21 +26,7 @@ Viel Erfolg mit deinem AR-Projekt!
 
 ## SurrealDB Echtzeit-Updates
 
-`SurrealDBClient` besitzt nun eine WebSocket-Anbindung. Nach erfolgreichem
-`LoginREST()` kann mit `ConnectWebSocket()` eine Live-Verbindung aufgebaut
-werden. Änderungen an der Tabelle `marker` werden so in Echtzeit gemeldet.
-
-Beispiel:
-
-```csharp
-void Start()
-{
-    var client = GetComponent<SurrealDBClient>();
-    StartCoroutine(client.LoginREST());
-    client.OnMarkerUpdate += data => Debug.Log($"Marker {data.id} aktualisiert");
-    client.ConnectWebSocket();
-}
-```
-
-Bei Verbindungsabbrüchen wird automatisch versucht, die Verbindung erneut
-herzustellen.
+`SurrealDBClient` bietet eine WebSocket-Schnittstelle. Nach dem REST-Login
+kann per `ConnectWebSocket()` eine Live-Verbindung gestartet werden. Das Skript
+meldet Änderungen an der Tabelle `marker` über das Event `OnMarkerUpdate` und
+baut bei Verbindungsabbrüchen automatisch wieder eine Verbindung auf.
