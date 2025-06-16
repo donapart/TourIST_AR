@@ -1,0 +1,9 @@
+%YAML 1.1
+--- !u!1 &1
+GameObject:
+  m_Name: Panel_Left
+  m_Component:
+  - component: {fileID: 224}
+--- !u!224 &224
+MonoBehaviour:
+  m_GameObject: {fileID: 1}

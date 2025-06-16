@@ -8,8 +8,7 @@
    - AR Foundation
    - ARCore XR Plugin
    - ARKit XR Plugin
-4. Öffne `Assets/Scenes/MainARScene.unity`. Diese Datei ist hier als einfache
-   Platzhalter-Szene enthalten und kann in Unity nach Bedarf ersetzt werden.
+4. Öffne `Assets/Scenes/MainARScene.unity` (erstelle ggf. Platzhalter-Szene).
 5. Importiere Appoly/ARCore-Location in das Projekt.
 6. Ziehe `GPSManager` auf ein leeres GameObject und weise `LocationProvider` zu.
 7. Platziere `DummyMarker`-Prefabs in der Szene und passe Koordinaten an.
@@ -18,8 +17,7 @@
 ## Struktur
 
 - `Assets/Scripts`: Enthält alle Kern-Scripts.
-- `Assets/Prefabs`: Enthält einfache Platzhalter-Prefabs (Panels, Marker, etc.)
-  die du nach Bedarf anpassen oder ersetzen kannst.
+- `Assets/Prefabs`: Prefabs ablegen (Panels, Marker, etc.).
 - `Assets/Images`: Platz für dein Logo.
 - `Impressum.txt`: Muster-Impressum.
 - `README.md`: Diese Datei.
