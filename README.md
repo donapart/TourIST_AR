@@ -23,3 +23,10 @@
 - `README.md`: Diese Datei.
 
 Viel Erfolg mit deinem AR-Projekt!
+
+## Weitere Dokumentation
+
+Im Repository liegt auch die Datei [TourIST_FreY_Doku.html](TourIST_FreY_Doku.html). Darin
+findest du einen kompakten Featureüberblick (GPS/Kompass, OCR, Barcode,
+SurrealDB-Anbindung u.v.m.), eine Architektur- und Szenenbeschreibung sowie
+kleine Codeausschnitte, etwa für den `GPSManager`.
