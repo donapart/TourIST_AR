@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>TOURIST°FREY – AR-App Projekt-Doku</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 900px; margin: 2rem auto; color: #222; background: #f9f9fa;}
+    h1, h2, h3 { color: #c86832; margin-top: 2.5em; }
+    h1 { font-size: 2.1em; letter-spacing: 0.05em; }
+    h2 { border-bottom: 1px solid #e0e0e0; padding-bottom: .2em; }
+    code, pre { background: #ececec; font-family: "Fira Mono", "Consolas", monospace; font-size: 1em; padding: .2em .4em; border-radius: .2em; }
+    pre { padding: .7em 1em; overflow-x: auto; }
+    .block { background: #fff; border-radius: 10px; box-shadow: 0 2px 10px #ddd4; padding: 2em; margin-bottom: 2em; }
+    ul { margin-top: .7em; }
+    .contact { margin-top: 2em; font-size: .95em; color: #888;}
+    a { color: #c86832; }
+    .logo { float: right; width: 120px; margin: -1em 0 2em 2em; }
+  </style>
+</head>
+<body>
+  <div class="block">
+    <img src="Logo_TourIST_FreY.png" alt="TourIST°FREY Logo" class="logo">
+    <h1>TOURIST°FREY – AR-App Starterpaket</h1>
+    <p><strong>Cross-Platform AR-App</strong> – Unity (iOS & Android), GPS/Location-basierte Marker, Objekterkennung, OCR, Barcode, Face Detection.  
+      Datenschutz/Consent, Demo-Marker, modernes UI-Panel-System.  
+      <br><strong>Diese Seite ist als Doku und Quickstart für Entwickler/Freelancer/Teams gedacht.</strong></p>
+  </div>
+
+  <div class="block">
+    <h2>1. Projektüberblick</h2>
+    <ul>
+      <li>Unity 2021.3+ / AR Foundation – voll plattformübergreifend</li>
+      <li>GPS/Kompass, Location-basierte Marker (Dummy- und Live-Events)</li>
+      <li>Modulare Features: Objekterkennung, OCR, Barcode, Face Detection</li>
+      <li>GDPR/DSGVO-Ready (Consent, Privacy, Datenlöschung)</li>
+      <li>Modernes UI mit versteckten Panels (randbasiert, swipefähig)</li>
+      <li>SurrealDB als Datenbank (REST/WebSocket)</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>2. Architektur-Übersicht</h2>
+    <pre>
+[ AR Foundation Kamera ]
+        ↓
+[ AR Overlay Canvas: Menüs, Marker, Info ]
+        ↓
+[ RecognitionManager (Features: OCR, Barcode, etc.) ]
+        ↓
+[ SurrealDB (REST/WebSocket: Marker, Events) ]
+        ↓
+[ ConsentManager, Privacy, GDPR-Tools ]
+    </pre>
+  </div>
+
+  <div class="block">
+    <h2>3. Feature-Liste</h2>
+    <ul>
+      <li>Versteckte, randbasierte Panels (Menü, Filter, Info)</li>
+      <li>Touch/Swipe-fähig, responsive UI</li>
+      <li>GPS- und Kompassintegration</li>
+      <li>Marker mit Label/Distanzanzeige (Dummy und dynamisch)</li>
+      <li>Integration für SurrealDB (REST/WebSocket)</li>
+      <li>Plug-ins für Objekterkennung (OpenCV), OCR (Tesseract), Barcode (ZXing), Face (Barracuda)</li>
+      <li>Consent-Dialog, In-App Privacy Policy, Impressum, Datenlöschung</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>4. Szenen- und Prefab-Struktur</h2>
+    <pre>
+/Assets
+  /Scenes
+    MainARScene.unity
+  /Scripts
+    PanelEdgeTrigger.cs
+    PanelManager.cs
+    GPSManager.cs
+    RecognitionManager.cs
+    SurrealDBClient.cs
+    ConsentManager.cs
+    DummyMarker.cs
+    MarkerOverlayUI.cs
+    ImpressumPanel.cs
+  /Prefabs
+    Panel_Left.prefab
+    Panel_Right.prefab
+    Panel_Top.prefab
+    Panel_Bottom.prefab
+    ConsentPanel.prefab
+    DummyMarker.prefab
+    MarkerOverlayUI.prefab
+  /Images
+    Logo_TourIST_FreY.png
+    </pre>
+  </div>
+
+  <div class="block">
+    <h2>5. Quickstart-Guide</h2>
+    <ul>
+      <li><b>Voraussetzungen:</b> Unity 2021.3+ / AR Foundation / ARCore/ARKit XR Plugin</li>
+      <li>Projekt/Unitypackage importieren</li>
+      <li>AR Foundation & Plugins installieren (Package Manager)</li>
+      <li>Szene <b>MainARScene.unity</b> öffnen</li>
+      <li>DummyMarker platzieren, Panels & ConsentPanel prüfen</li>
+      <li>Build auf Android/iOS testen</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>6. SurrealDB Konfiguration</h2>
+    <ul>
+      <li>Eigene SurrealDB Instanz starten und Namespace <code>touristfrey</code> sowie Datenbank <code>arapp</code> anlegen.</li>
+      <li>Tabelle <code>marker</code> mit Feldern <em>id</em>, <em>label</em>, <em>latitude</em> und <em>longitude</em> erzeugen.</li>
+      <li><code>SurrealDBClient</code> im Unity-Projekt mit URL und Zugangsdaten befüllen.</li>
+    </ul>
+    <p>Ein Aufruf von <code>SELECT * FROM marker;</code> liefert z.B.:</p>
+    <pre>
+[
+  {
+    "result": [
+      { "id": "marker:demo", "label": "Museum", "latitude": 48.137, "longitude": 11.576 }
+    ]
+  }
+]
+    </pre>
+  </div>
+
+  <div class="block">
+    <h2>7. Code-Beispiel: GPSManager</h2>
+    <pre>
+public Vector2 GetCurrentGPS()
+{
+    var loc = locationProvider.CurrentLocation;
+    return new Vector2((float)loc.Latitude, (float)loc.Longitude);
+}
+    </pre>
+  </div>
+
+  <div class="block">
+    <h2>8. GDPR & Datenschutz</h2>
+    <ul>
+      <li>Consent-Dialog beim Start (ConsentManager.cs)</li>
+      <li>Nur Meta-/Erkennungsdaten gespeichert, keine Bilder</li>
+      <li>Lokale Verarbeitung (OCR, Objekterkennung, Face)</li>
+      <li>TLS/HTTPS für SurrealDB-Verbindung</li>
+      <li>In-App Löschung, Opt-out, Privacy Policy/Impressum</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>9. UI/UX Panels</h2>
+    <ul>
+      <li><b>Links:</b> Menü (Karte, Einstellungen, Impressum)</li>
+      <li><b>Rechts:</b> Feature-Toggles (Objekt, OCR, Barcode, Face)</li>
+      <li><b>Oben:</b> Adress-/Statuszeile</li>
+      <li><b>Unten:</b> Info/Status</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>10. Marker & Overlay</h2>
+    <ul>
+      <li>AR-Marker mit GPS/Kompass platziert (Dummy oder dynamisch aus SurrealDB)</li>
+      <li>Overlay zeigt Name, Distanz (MarkerOverlayUI.cs)</li>
+      <li>Mehrere DummyMarker als Demo im Projekt</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>11. Erweiterung</h2>
+    <ul>
+      <li>SurrealDB Live-Events (WebSocket)</li>
+      <li>Eigene Objekterkennung/Plugins andockbar</li>
+      <li>Branding, Style, Sprache frei anpassbar</li>
+    </ul>
+  </div>
+
+  <div class="block contact">
+    <strong>Kontakt/Support:</strong> info@tourist-frey.demo<br>
+    <span>Impressum und Privacy Policy im linken Panel der App.</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Impressum (Demo)
+
+TourIST°FreY
+Musterstraße 1
+12345 Musterstadt
+Deutschland
+
+E-Mail: info@tourist-frey.demo
+
+Hinweis: Diese App ist ein Demo-Prototyp für AR-UI/UX und keine finale Anwendung.
