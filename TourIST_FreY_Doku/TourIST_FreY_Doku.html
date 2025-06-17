@@ -108,26 +108,7 @@
   </div>
 
   <div class="block">
-    <h2>6. SurrealDB Konfiguration</h2>
-    <ul>
-      <li>Eigene SurrealDB Instanz starten und Namespace <code>touristfrey</code> sowie Datenbank <code>arapp</code> anlegen.</li>
-      <li>Tabelle <code>marker</code> mit Feldern <em>id</em>, <em>label</em>, <em>latitude</em> und <em>longitude</em> erzeugen.</li>
-      <li><code>SurrealDBClient</code> im Unity-Projekt mit URL und Zugangsdaten befüllen.</li>
-    </ul>
-    <p>Ein Aufruf von <code>SELECT * FROM marker;</code> liefert z.B.:</p>
-    <pre>
-[
-  {
-    "result": [
-      { "id": "marker:demo", "label": "Museum", "latitude": 48.137, "longitude": 11.576 }
-    ]
-  }
-]
-    </pre>
-  </div>
-
-  <div class="block">
-    <h2>7. Code-Beispiel: GPSManager</h2>
+    <h2>6. Code-Beispiel: GPSManager</h2>
     <pre>
 public Vector2 GetCurrentGPS()
 {
@@ -138,7 +119,7 @@ public Vector2 GetCurrentGPS()
   </div>
 
   <div class="block">
-    <h2>8. GDPR & Datenschutz</h2>
+    <h2>7. GDPR & Datenschutz</h2>
     <ul>
       <li>Consent-Dialog beim Start (ConsentManager.cs)</li>
       <li>Nur Meta-/Erkennungsdaten gespeichert, keine Bilder</li>
@@ -149,7 +130,7 @@ public Vector2 GetCurrentGPS()
   </div>
 
   <div class="block">
-    <h2>9. UI/UX Panels</h2>
+    <h2>8. UI/UX Panels</h2>
     <ul>
       <li><b>Links:</b> Menü (Karte, Einstellungen, Impressum)</li>
       <li><b>Rechts:</b> Feature-Toggles (Objekt, OCR, Barcode, Face)</li>
@@ -159,7 +140,7 @@ public Vector2 GetCurrentGPS()
   </div>
 
   <div class="block">
-    <h2>10. Marker & Overlay</h2>
+    <h2>9. Marker & Overlay</h2>
     <ul>
       <li>AR-Marker mit GPS/Kompass platziert (Dummy oder dynamisch aus SurrealDB)</li>
       <li>Overlay zeigt Name, Distanz (MarkerOverlayUI.cs)</li>
@@ -168,7 +149,7 @@ public Vector2 GetCurrentGPS()
   </div>
 
   <div class="block">
-    <h2>11. Erweiterung</h2>
+    <h2>10. Erweiterung</h2>
     <ul>
       <li>SurrealDB Live-Events (WebSocket)</li>
       <li>Eigene Objekterkennung/Plugins andockbar</li>
